@@ -1,0 +1,8 @@
+/* .{
+    border-bottom: 2px solid black;
+} */
+
+.nav-link:hover{    
+    background-color: #B9B4C7;
+    color: #352F44;
+}

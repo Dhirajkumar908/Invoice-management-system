@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+{% block content %}
+  <!-- Modal -->
+<div class="row" style="border-top: 5 solid #5C5470; border-radius: 25px;">
+  <div class="col mt-4 " style="max-height: 100vh; overflow: auto;">
+        {% for i in users %}
+        <div class="row m-2 p-2 bg-light">
+        <div class="col-4"><b>{{i.username}}</b></div>
+        <div class="col-8">{{i.number}}</div>
+        </div>
+        {% endfor %}
+  </div>
+
+  <div class="col mt-4">
+    <form method="post" action="client">
+      {% csrf_token %}
+        <div class="row ">
+            <div class="col">
+                 <label  class="form-label">UserName</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div class="col">
+                <label  class="form-label">Number</label>
+                <input type="text" class="form-control" name="number">
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col">
+                 <label  class="form-label">Email</label>
+                <input type="email" class="form-control" name="email">
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col">
+                 <label  class="form-label">State</label>
+                <input type="text" class="form-control" name="state">
+            </div>
+            <div class="col">
+                <label  class="form-label">City</label>
+                <input type="text" class="form-control" name="city">
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col">
+                 <label  class="form-label">House_number</label>
+                <input type="text" class="form-control" name="house_number">
+            </div>
+            <div class="col">
+                <label  class="form-label">Pin Code</label>
+                <input type="text" class="form-control" name="pincode">
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col">
+                <label  class="form-label">Strite</label>
+                <input type="text" class="form-control" name="strite">
+            </div>
+        </div>
+
+
+    
+      <button type="submit" class="btn text-light mt-3" style="background-color: #5C5470;">Submit</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

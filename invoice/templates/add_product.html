@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+{% block content %}
+  <!-- Modal -->
+<div class="row mt-4">
+  <div class="col " style="max-height: 100vh; overflow: auto;">
+    {% for i in product %}
+    <div class="row m-2 p-2 bg-light">
+      <div class="col-4"><b>{{i.product_name}}</b></div>
+      <div class="col-8">{{i.product_discription}}</div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="col">
+    <form method="post" action="add_product">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label  class="form-label">Product Name</label>
+        <input type="text" class="form-control" name="product">
+   
+      </div>
+      <div class="mb-3">
+        <label  class="form-label">Product_discription</label>
+        <!-- <input type="text" class="form-control"> -->
+        <textarea name="product_discription" id="" cols="63" rows="5"></textarea>
+      </div>
+      <button type="submit" class="btn text-light" style="background-color: #5C5470;">Submit</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

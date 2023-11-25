@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+    {% block css %}
+    <link href="{% static 'css/invoic.css' %}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+
+{% block content %}
+<div class="row invoice_head">
+    <div class="col-7"></div>
+    <!-- <div class="col text-white"><button class="btn border" onclick="captureTable('invoice','{{invoice.Client_details.username}}')">Download</button> <a type="" href="/invoice"><button class="btn border mx-5">GoBack</button></a></div> -->
+    <div class="col text-white"><a href=""><button class="btn border" download()>Download</button></a></div>
+    <!-- <div class="col"></div> -->
+
+</div>
+ <hr>  
+<div class="row">
+    <div class="col Invoice" >
+            
+    <div class="invoice-container" id="invoice">
+        <h1 class="header">Invoice</h1>
+    
+        <h2 class="header">Client Details</h2>
+        <p><strong>Name:</strong> {{ invoice.Client_details.username }}</p>
+        <p><strong>Email:</strong> {{ invoice.Client_details.email }}</p>
+        <p><strong>Number:</strong> {{ invoice.Client_details.number }}</p>
+        <p><strong>Address:</strong> {{ invoice.Client_details.house_number }}, {{ invoice.Client_details.Strite }}, {{ invoice.Client_details.city }}, {{ invoice.Client_details.state }} - {{ invoice.Client_details.pincod }}</p>
+    
+        <h2 class="header">Product Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Discount</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for invoice in invoice %}
+                <tr>
+                    <td>{{ invoice.product_details__product_name}}</td>
+                    <td>{{ invoice.product_details__product_discription }}</td>
+                    <td>{{ invoice.price }}</td>
+                    <td>{{ invoice.quantity }}</td>
+                    <td>{{ invoice.discount }}</td>
+                    <td>{{ invoice.sub_total }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    
+        <div class="total">
+            <p><strong>Total:</strong> {{ invoice.sub_total }}</p>
+        </div>
+    
+    
+    </div>
+</div>
+       
+
+{% endblock %}
+
+
+{% block js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script src="{% static 'js/invoice.js' %}"></script>
+{% endblock %}
+

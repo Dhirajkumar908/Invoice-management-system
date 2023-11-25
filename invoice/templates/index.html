@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link href="{% static 'css/index.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row text-light mt-4" style="background-color: #5C5470;">
+        <div class="col">
+            <div class="row mt-1 mb-1 p-2">
+                <div class="col">ID</div>
+                <div class="col">Name</div>
+                <div class="col">Number</div>
+                <div class="col">City</div>
+                <div class="col">Product</div>
+                <div class="col">Price</div>
+                <div class="col">sub_total</div>
+                <div class="col">INVOICE</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        
+        <div class="col">
+            {% for i in datas %}
+            <div class="row bg-light mt-1 mb-1 p-2">
+                <div class="col">{{i.id}}</div>
+                <div class="col">{{i.Client_details.username}}</div>
+                <div class="col">{{i.Client_details.number}}</div>
+                <div class="col">{{i.Client_details.city}}</div>
+                <div class="col">{{i.product_details}}</div>
+                <div class="col">{{i.price}}</div>
+                <div class="col">{{i.sub_total}}</div>
+                <div class="col"><a href="invoice/{{i.Client_details.id}}">View</a></div>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
